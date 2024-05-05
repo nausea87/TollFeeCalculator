@@ -1,4 +1,6 @@
-﻿namespace TollFeeCalculator
+﻿using NB.Tolls.Interfaces;
+
+namespace NB.Tolls
 {
     public class Motorbike : IVehicle
     {

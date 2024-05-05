@@ -1,4 +1,4 @@
-﻿namespace TollFeeCalculator
+﻿namespace NB.Tolls.Interfaces
 {
     public interface IVehicle
     {
