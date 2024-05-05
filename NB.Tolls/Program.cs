@@ -12,11 +12,11 @@ namespace NB.Tolls
             IVehicle motorbike = new Motorbike();
 
             DateTime[] dates =
-            {
-            new DateTime(2024, 5, 6, 2, 0, 0),
-            new DateTime(2024, 5, 6, 8, 0, 0),
-            new DateTime(2024, 5, 6, 16, 30, 0)
-        };
+            [
+            new (2024, 5, 6, 2, 0, 0),
+            new (2024, 5, 7, 8, 0, 0),
+            new (2024, 5, 8, 16, 30, 0)
+            ];
 
             foreach (var date in dates)
             {
