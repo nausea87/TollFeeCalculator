@@ -5,6 +5,20 @@ namespace NB.Tolls
     public class Car : IVehicle
     {
         public string VehicleType => "Car";
+        public int GetTollFee(int hour, int minute)
+        {
+            if (hour == 6 && minute <= 29) return 8;
+            if (hour == 6 && minute >= 30) return 13;
+            if (hour == 7) return 18;
+            if (hour == 8 && minute <= 29) return 13;
+            if (hour == 8 && minute >= 30 || hour >= 9 && hour <= 14) return 8;
+            if (hour == 15 && minute <= 29) return 13;
+            if (hour == 15 && minute >= 30 || hour == 16) return 18;
+            if (hour == 17) return 13;
+            if (hour == 18 && minute <= 29) return 8;
+
+            return 0;
+        }
     }
 }
 

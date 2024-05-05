@@ -12,12 +12,11 @@ namespace NB.Tolls
             IVehicle motorbike = new Motorbike();
 
             DateTime[] dates =
-            [
-                new (2024, 5, 6, 2, 0, 0),
-                new (2024, 5, 6, 8, 0, 0),
-                new (2024, 5, 6, 16, 30, 0)
-            ]; // Some hard-coded dates for now.
-               // In a real application these dates should probably/ideally be replaced by current date.
+            {
+            new DateTime(2024, 5, 6, 2, 0, 0),
+            new DateTime(2024, 5, 6, 8, 0, 0),
+            new DateTime(2024, 5, 6, 16, 30, 0)
+        };
 
             foreach (var date in dates)
             {
@@ -30,8 +29,6 @@ namespace NB.Tolls
             int motorbikeFee = calculator.CalculateDailyToll(motorbike, dates);
 
             Console.WriteLine($"Total Toll Fee for Car: {carTollFee}");
-
-            // Motorbike working as some sort of test for now, as it always should be free.
             Console.WriteLine($"Total Toll Fee for Motorbike: {motorbikeFee}");
         }
     }

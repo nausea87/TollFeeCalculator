@@ -11,20 +11,21 @@ public partial class TollCalculator
 
         foreach (DateTime date in dates)
         {
-            int nextFee = GetTollFee(date, vehicle);
-            int tempFee = GetTollFee(intervalStart, vehicle);
+            int nextFee = vehicle.GetTollFee(date.Hour, date.Minute);
+            int tempFee = vehicle.GetTollFee(intervalStart.Hour, intervalStart.Minute);
 
-            TimeSpan timeDiff = date - intervalStart; // Cleaner than the manual millisecond calculation?
+            TimeSpan timeDiff = date - intervalStart;
 
-            if (timeDiff.TotalMinutes <= MaxTollFee)
+            if (timeDiff.TotalMinutes <= 60)
             {
                 if (totalFee > 0) totalFee -= tempFee;
-                tempFee = Math.Max(tempFee, nextFee); // Using Math.Max istället
+                tempFee = Math.Max(tempFee, nextFee);
                 totalFee += tempFee;
             }
             else
             {
                 totalFee += nextFee;
+                intervalStart = date;
             }
         }
 
@@ -43,28 +44,6 @@ public partial class TollCalculator
                vehicleType == TollFreeVehicles.Diplomat.ToString() ||
                vehicleType == TollFreeVehicles.Foreign.ToString() ||
                vehicleType == TollFreeVehicles.Military.ToString();
-    }
-
-    private int GetTollFee(DateTime date, IVehicle vehicle)
-    {
-        if (IsTollFreeDate(date) || IsTollFreeVehicle(vehicle)) return 0;
-
-        int hour = date.Hour;
-        int minute = date.Minute;
-
-        // TODO : Calculate time of day somewhere else. In Car.cs as only cars pay tolls?
-
-        if (hour == 6 && minute <= 29) return 8;
-        if (hour == 6 && minute >= 30) return 13;
-        if (hour == 7) return 18;
-        if (hour == 8 && minute <= 29) return 13;
-        if (hour == 8 && minute >= 30 || hour >= 9 && hour <= 14) return 8;
-        if (hour == 15 && minute <= 29) return 13;
-        if (hour == 15 && minute >= 30 || hour == 16) return 18;
-        if (hour == 17) return 13;
-        if (hour == 18 && minute <= 29) return 8;
-
-        return 0;
     }
 
     // Röda dagar
