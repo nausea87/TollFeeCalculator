@@ -20,6 +20,12 @@ namespace NB.Tolls.Vehicles
             (new TimeSpan(18, 0, 0), new TimeSpan(18, 29, 59), 8)
         ];
 
+        // In a real application we'd most likely fetch these time spans + the fee from an API call.
+        // Example: Our customer store the time spans and fee values in a 3rd party -> and we do a GET request.
+        // This way the customer has control and can edit freely without a new deploy.
+
+        // Same goes for other values like MaxTollFee or enum TollFreeVehicles.
+
         public int GetTollFee(int hour, int minute, DateTime date)
         {
 
@@ -30,11 +36,11 @@ namespace NB.Tolls.Vehicles
 
             var currentTime = new TimeSpan(hour, minute, 0);
 
-            foreach (var (Start, End, Fee) in tollFeeRules)
+            foreach (var (start, end, fee) in tollFeeRules)
             {
-                if (currentTime >= Start && currentTime <= End)
+                if (currentTime >= start && currentTime <= end)
                 {
-                    return Fee;
+                    return fee;
                 }
             }
 

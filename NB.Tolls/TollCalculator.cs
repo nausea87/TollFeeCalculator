@@ -4,7 +4,7 @@ namespace NB.Tolls
 {
     public partial class TollCalculator
     {
-        private const int MaxTollFee = 60;
+        private const int MaxTollFee = 60; // See line 27, Car.cs
 
         public static int CalculateDailyToll(IVehicle vehicle, DateTime[] dates)
         {
@@ -18,11 +18,14 @@ namespace NB.Tolls
 
                 TimeSpan timeDiff = date - intervalStart;
 
-                if (timeDiff.TotalMinutes <= 60)
+                if (timeDiff.TotalMinutes <= MaxTollFee)
                 {
-                    if (totalFee > 0) totalFee -= tempFee;
-                    tempFee = Math.Max(tempFee, nextFee);
-                    totalFee += tempFee;
+                    if (totalFee > 0)
+                    {
+                        totalFee -= tempFee;
+                        tempFee = Math.Max(tempFee, nextFee);
+                        totalFee += tempFee;
+                    }
                 }
                 else
                 {
