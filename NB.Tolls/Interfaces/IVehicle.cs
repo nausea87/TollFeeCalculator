@@ -3,6 +3,6 @@
     public interface IVehicle
     {
         string VehicleType { get; }
-        int GetTollFee(int hour, int minute);
+        int GetTollFee(int hour, int minute, DateTime date);
     }
 }

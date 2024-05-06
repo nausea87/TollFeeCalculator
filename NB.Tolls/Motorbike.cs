@@ -1,10 +1,10 @@
 ﻿using NB.Tolls.Interfaces;
 
-namespace NB.Tolls
+namespace NB.Tolls.Vehicles
 {
     public class Motorbike : IVehicle
     {
         public string VehicleType => "Motorbike";
-        public int GetTollFee(int hour, int minute) => 0;
+        public int GetTollFee(int hour, int minute, DateTime date) => 0;
     }
 }

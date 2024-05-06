@@ -1,7 +1,11 @@
-﻿public partial class TollCalculator
+﻿namespace NB.Tolls
 {
-    private enum TollFreeVehicles
+    public partial class TollCalculator
     {
-        Motorbike, Tractor, Emergency, Diplomat, Foreign, Military
+        private enum TollFreeVehicles
+        {
+            Motorbike, Tractor, Emergency, Diplomat, Foreign, Military
+        }
     }
 }
+
