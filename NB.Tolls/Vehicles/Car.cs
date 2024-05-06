@@ -24,7 +24,7 @@ namespace NB.Tolls.Vehicles
         // Example: Our customer store the time spans and fee values in a 3rd party -> and we do a GET request.
         // This way the customer has control and can edit freely without a new deploy.
 
-        // Same goes for other values like MaxTollFee or enum TollFreeVehicles.
+        // Same goes for other values like MaxTollFee, IsTollFreeDate method or enum TollFreeVehicles.
 
         public int GetTollFee(int hour, int minute, DateTime date)
         {
